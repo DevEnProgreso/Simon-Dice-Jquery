@@ -1,19 +1,16 @@
 var buttonColours = ["red", "blue", "green", "yellow"];
 
 var gamePattern = [];
-
 var userClickedPattern = [];
 
 $(".btn").click(function () {
   var userChosenColour = $(this).attr("id");
-  var audio = new Audio("sounds/" + userChosenColour + ".mp3");
-  audio.play();
   userClickedPattern.push(userChosenColour);
-});
 
-function animatePress(currentColour) {
-  $(".btn").addClass("pressed");
-}
+  playSound(userChosenColour);
+
+  animatePress(userChosenColour);
+});
 
 function nextSequence() {
   var randomNumber = Math.floor(Math.random() * 4);
@@ -24,4 +21,25 @@ function nextSequence() {
     .fadeIn(100)
     .fadeOut(100)
     .fadeIn(100);
+
+  playSound(randomChosenColour);
+}
+
+function playSound(name) {
+  var audio = new Audio("sounds/" + name + ".mp3");
+  audio.play();
+}
+
+//1. Create a new function called animatePress(), it
+
+function animatePress(currentColor) {
+  //2. Use jQuery to add this pressed class to the
+
+  $("#" + currentColor).addClass("pressed");
+
+  //3. use Google/Stackoverflow to figure out how
+
+  setTimeout(function () {
+    $("#" + currentColor).removeClass("pressed");
+  }, 100);
 }
