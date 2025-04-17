@@ -30,14 +30,8 @@ function playSound(name) {
   audio.play();
 }
 
-//1. Create a new function called animatePress(), it
-
 function animatePress(currentColor) {
-  //2. Use jQuery to add this pressed class to the
-
   $("#" + currentColor).addClass("pressed");
-
-  //3. use Google/Stackoverflow to figure out how
 
   setTimeout(function () {
     $("#" + currentColor).removeClass("pressed");
